@@ -1,6 +1,6 @@
 # mailhelp
 
-Config and dot files for mutt-based setup on macOS for gmail: mutt, mbsync, fdm, msmtp.
+Config and dot files for mutt-based setup on macOS for gmail: mutt, mbsync, fdm, msmtp. mutt, mbsync and msmtp installed through brew, while fdm compiled from source.
 
 ### [mutt](http://www.mutt.org/)
 A reasonable mail client (MUA).
