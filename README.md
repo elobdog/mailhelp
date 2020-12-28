@@ -25,3 +25,7 @@ full-fledged MTA like sendmail or postfix.
 ## Setup on macOS
 mutt, mbsync (isync) and msmtp can be installed through brew. fdm 
 requires compiling from source.
+
+## Architecture
+Roughly looks like this:
+![mutt etc.](images/mutter.jpeg)
