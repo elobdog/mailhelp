@@ -1,0 +1,24 @@
+#!/bin/sh
+
+MESSAGE=$(cat)
+
+EMAIL=$(echo "${MESSAGE}" | grep ^"From: " | sed 's/[^<]*<\([^@]*\)@.*/\1/')
+
+case $EMAIL in
+	"DO_NOT_REPLY") addalias=no;;
+	"drive-shares-noreply") addalias=no;;
+	noreply*|no-reply*|no_reply*) addalias=no;;
+	artifactory) addalias=no;;
+	*) addalias=yes;;
+esac
+
+if [ "$addalias" == "yes" ]; then
+	NEWALIAS=$(echo "${MESSAGE}" | grep ^"From: " | sed s/[\,\"\']//g | awk '{$1=""; if (NF == 3) {print "alias" $0;} else if (NF == 2) {print "alias" $0 $0;} else if (NF > 3) {print "alias", tolower($2)"-"tolower($(NF-1)) $0;}}')
+	if grep -Fxq "$NEWALIAS" $HOME/.mutt/alias; then
+    	:
+	else
+		echo "$NEWALIAS" >> $HOME/.mutt/alias
+	fi
+fi
+
+echo "${MESSAGE}"

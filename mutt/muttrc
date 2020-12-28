@@ -1,0 +1,116 @@
+# elobdog's muttrc
+
+set mbox_type=Maildir
+set folder=~/.mail/acct0
+set spoolfile=+inbox
+set postponed=+[Gmail]/Drafts
+set trash=+[Gmail]/Trash
+
+set sendmail="/usr/local/bin/msmtp -a acct0"
+set sendmail_wait = 0
+
+# set record=+Sent		# sent mail
+unset record			# Gmail auto saves in +[Gmail]/Sent
+
+# other paths
+set header_cache=~/.mutt/cache/header
+set tmpdir=~/.mutt/tmp
+set signature=~/.mutt/sig
+set alias_file=~/.mutt/alias
+
+# other options
+set wait_key=no
+set timeout=3
+set date_format="!%a, %b %D, %Y at %I:%M:%S%p %Z"
+
+# index options
+set arrow_cursor
+unset crypt_verify_sig
+macro index G "!mbsync -a^M" "sync mail"
+
+# personal details
+set realname="Amarendra Godbole"
+set from="xxxx@gmail.com"
+set use_from=yes
+set use_envelope_from=yes
+set reverse_name=yes
+
+# display/pager
+ignore *                                # ignore all headers
+unignore from: to: cc: date: subject:   # show only these
+unhdr_order *                           # some distros order things by default
+hdr_order from: to: cc: date: subject:  # and in this order
+set date_format = "%m/%d/%y"
+set pager_format="%4C %Z %[!%b %e at %I:%M %p]  %.20n  %s%* -- (%P)"
+set text_flowed
+set sort=threads                        # like gmail
+set strict_threads=yes
+set uncollapse_jump                     # don't collapse on an unread message
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set delete
+unset confirmappend
+unset mark_old
+set quit
+set pipe_decode
+set thorough_search
+set auto_tag=yes
+set pager_index_lines=6    # number of index lines to show
+set pager_context=2        # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+unset resolve
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+set mailcap_path=~/.mutt/mailcap
+set display_filter="sh ~/.mutt/display"
+macro attach s <save-entry><bol>~/Downloads/<eol>
+set sort_alias = alias
+
+# pager key bindings
+bind pager k  previous-line
+bind pager j  next-line
+bind pager [ previous-page
+bind pager ] next-page
+
+# View attachments properly.
+bind attach <return> view-mailcap
+
+# compose
+set autoedit=yes
+set edit_headers=yes
+set editor=vi
+set postpone=ask-yes
+set include
+
+# statusbar
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+# source files
+source ~/.mutt/color/colors-gruvbox-shuber.muttrc
+source ~/.mutt/macro
+source $alias_file
+
+# Original access directly via IMAP and SMTP to gmail servers.
+#
+# IMAP
+#set folder=imaps://imap.gmail.com:993/
+#set imap_user=xxxx@gmail.com
+#set imap_pass="XXXXXX"
+#unset imap_passive
+#set imap_keepalive=300
+#set mail_check=60
+
+#set spoolfile=+INBOX
+#mailboxes +INBOX
+#set postponed=+[Gmail]/Drafts
+#set trash=+[Gmail]/Trash
+
+# SMTP
+#set smtp_pass=$imap_pass
+#set smtp_url=smtps://$imap_user@smtp.gmail.com:465/
+#set ssl_force_tls=yes
+#set smtp_authenticators='gssapi:login'

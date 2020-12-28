@@ -1,0 +1,10 @@
+text/html; lynx -dump '%s'; nametemplate=%s.html; copiousoutput
+
+# common formats
+application/pdf; show.sh '%s'
+application/msword; show.sh '%s' '/Applications/Microsoft Word.app'
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; show.sh '%s' '/Applications/Microsoft Excel.app'
+
+# images
+image/jpeg; show.sh '%s'
+image/png; show.sh '%s'

@@ -1,0 +1,2 @@
+bind editor <space> noop
+macro index,pager \Cs  "<change-folder>=[Gmail]/Sent Mail<enter>"  "go to Sent Items"

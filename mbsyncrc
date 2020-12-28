@@ -1,0 +1,24 @@
+IMAPAccount acct0
+Host imap.gmail.com
+User xxxx@gmail.com
+PassCmd "sh mbsyncpass.sh get"
+SSLType IMAPS
+SSLVersions TLSv1.2
+AuthMechs LOGIN
+PipelineDepth 50
+
+IMAPStore acct0-remote
+Account acct0
+
+MaildirStore acct0-local
+Path ~/.mail/acct0/
+Inbox ~/.mail/acct0/inbox
+Subfolders Verbatim
+
+Channel acct0
+Master :acct0-remote:
+Slave :acct0-local:
+Patterns * ![Gmail]/Snoozed ![Gmail]/Scheduled ![Gmail]/Chats ![Gmail]/Categories/ ![Gmail]/Spam ![Gmail]/follow-up
+Create Both
+Expunge Both
+SyncState *
