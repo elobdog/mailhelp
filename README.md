@@ -2,22 +2,22 @@
 
 Config and dot files for mutt-based setup on macOS for gmail: mutt, mbsync, fdm, msmtp.
 
-### [mutt] (http://www.mutt.org/)
+### [mutt](http://www.mutt.org/)
 A reasonable mail client (MUA).
 
-### [mbsync] (https://isync.sourceforge.io)
+### [mbsync](https://isync.sourceforge.io)
 Short for mailbox sync. allows sync'ing remote IMAP mailboxes with local 
 storage. While mutt supports IMAPS, the latency is irritating and wanted 
 my mail offline, in case gmail decides to lock me out one day. mbsync is 
 an alternative to offlineimap and fetchmail.
 
-### [fdm] (https://github.com/nicm/fdm)
+### [fdm](https://github.com/nicm/fdm)
 Short for fetch and deliver mail. Powerful, config driven fetch and 
 deliver utility that can fetch mail as well as deliver it to local 
 folders. Since mbsync fetches mail, fdm delivers it to local maildir 
 folders, based on fiter rules. fdm is an alternative for procmail.
 
-### [msmtp] (https://marlam.de/msmtp/)
+### [msmtp](https://marlam.de/msmtp/)
 SMTP client that talks with gmail. Mutt has SMTP support, but again, the 
 latency is irritating. msmtp is an excellent alternative to a 
 full-fledged MTA like sendmail or postfix.
