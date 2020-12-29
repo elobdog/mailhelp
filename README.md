@@ -28,4 +28,4 @@ requires compiling from source.
 
 ## Architecture
 Roughly looks like this:
-![mutt etc.](images/mutter.jpeg)
+![mutt etc.](images/mutter.jpg)
